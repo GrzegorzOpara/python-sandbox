@@ -12,11 +12,13 @@ We have a list of bags that are supposed to be loaded into the plane in containe
 - The containers are put into plane in the **FIFO** order but unloded in **LIFO** order
 
 ## Problem statement
-Write the code that loads bags into the plane and then unload them.
+Write the code* that loads bags into the plane and then unload them.
+
+**Ideally if besides of the main code you provide some unit test as well*
 
 For instance:
 
-Input: [5, 10, 15, 10, 10, 5]
+Input (the list of bags): **[5, 10, 15, 20, 10, 5]**
 
-Should be split into two containers: [5, 10, 15] and [10, 10, 5]
-During the unload we use LIFO order so first goes [10, 10, 5] and then [5, 10, 15], and the once we unload bags from containers as well, finally we should get: [15, 10, 5, 5, 10, 10]
+Should be split into two containers: [5, 10, 15] *(total wieght 30)* and [20, 10, 5] *(total weight 35)*
+During the unload we use LIFO order so first goes the container **[20, 10, 5]** and then container **[5, 10, 15]**, and the once we unload bags from containers as well, finally we should get the output list: **[5, 10, 20, 15, 10, 5]**.
