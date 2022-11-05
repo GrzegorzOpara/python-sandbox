@@ -5,7 +5,7 @@ class TestAirport(unittest.TestCase):
 
     def test_standard(self):
         """
-        Test standard input
+        Test standard list of bags
         """
         input = [5, 9, 13, 2, 7, 11, 5, 1, 8, 4, 10, 2, 4, 21, 7, 4, 6, 12, 2]
         plane = ap.Plane(input)
@@ -18,7 +18,7 @@ class TestAirport(unittest.TestCase):
 
     def test_incorrect_bags(self):
         """
-        Test standard input
+        Test empty and oversized bags in the list
         """
         input = [5, 9, 13, 2, 7, 11, 5, 1, 8, 4, 0, 10, 2, 4, 21, 7, 4, 44, 6, 12, 2]
         plane = ap.Plane(input)
