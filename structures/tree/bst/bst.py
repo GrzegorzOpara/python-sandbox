@@ -2,53 +2,39 @@ from random import randint
 
 
 class Node:
-    def __init__(self, data):
+    def __init__(self, data=None):
         self.data = data
         self.left_child = None
         self.right_child = None
 
-class Tree:
-    def __init__(self):
-        self.root = None
-
     def insert(self, data):
-        if self.root == None:
-            self.root = Node(data)
-        else:
-            self._insert(data, self.root)
+        if not self.data:
+            self.data = data
+            return 
+        
+        if self.data == data:
+            return
 
-    def _insert(self, data, curr_node):
-        if data < curr_node.data:
-            if curr_node.left_child == None:
-                curr_node.left_child = Node(data)
+        if self.data < data:
+            if not self.right_child:
+                self.right_child = Node(data)
             else:
-                self._insert(data, curr_node.left_child)
-        elif data > curr_node.data:
-            if curr_node.right_child == None:
-                curr_node.right_child = Node(data)
+                self.right_child.insert(data)
+        elif self.data > data:
+            if not self.left_child:
+                self.left_child = Node(data)
             else:
-                self._insert(data, curr_node.rigth_child)
+                self.left_child.insert(data)
         else:
-            print('Value already in tree!')
+            return
     
-    def print_tree(self):
-        if self.root != None:
-            self._print_tree(self.root)
-        else:
-            print('None nodes in the tree!')
-
-    def _print_tree(self, curr_node):
-        if curr_node != None:
-            self._print_tree(curr_node.left_child)
-            print(str(curr_node.data))
-            self._print_tree(curr_node.right_child)
-
-def createTree(tree, num_elems=10, max_int=100):
+def createTree(num_elems=100, max_int=100):
+    tree = Node()
     for elem in range(num_elems):
         cur_elem = randint(0, max_int)
+        print(cur_elem)
         tree.insert(cur_elem)
     return tree
 
-tree = Tree()
-tree = createTree(tree)
-tree.print_tree()
+tree = createTree()
+# tree.print_tree()
